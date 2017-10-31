@@ -3,18 +3,23 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { UserComponent } from './user/user.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { ItemComponent } from './item/item.component';
 
 @NgModule( {
   declarations: [
     AppComponent,
-    UserComponent
+    UserComponent,
+    ItemComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    ReactiveFormsModule
   ],
   providers: [],
   entryComponents: [
-    UserComponent
+    UserComponent,
+    ItemComponent
   ],
   bootstrap: [ AppComponent ]
 } )

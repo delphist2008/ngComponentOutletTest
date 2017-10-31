@@ -1,11 +1,32 @@
 <div>
-  <button (click)="add()">тырк!</button>
+  <input type="text" [formControl]="eventString" [ngModel]="exampleEventString">
+  <textarea [formControl]="eventParams" [ngModel]="exampleEventParams"></textarea>
 </div>
 <div>
-  <h1> здесь будет результат:</h1>
-  <div *ngIf="ready">
-    <ng-container *ngFor="let cmp of components">
-      <ng-container *ngComponentOutlet="cmp.type; injector: cmp.params"></ng-container>
+  <h1>Токены:</h1>
+  <ng-container *ngFor="let token of tokens">
+    <div class="token">
+      <ng-container *ngIf="token.isComponent">
+        компонент типа {{token.type}}
+      </ng-container>
+      <ng-container *ngIf="!token.isComponent">
+        строка '{{token.title}}'
+      </ng-container>
+    </div>
+    <br>
+  </ng-container>
+  <br>
+</div>
+<div>
+  <div *ngIf="feedReady">
+    <h1>Результат:</h1>
+    <ng-container *ngFor="let token of tokens">
+      <ng-container *ngIf="!token.isComponent">
+        {{token.title}}
+      </ng-container>
+      <ng-container *ngIf="token.isComponent">
+        <ng-container *ngComponentOutlet="token.component; injector: token.injector"></ng-container>
+      </ng-container>
     </ng-container>
   </div>
 </div>
