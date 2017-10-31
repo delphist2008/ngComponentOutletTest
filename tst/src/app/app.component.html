@@ -1,0 +1,11 @@
+<div>
+  <button (click)="add()">тырк!</button>
+</div>
+<div>
+  <h1> здесь будет результат:</h1>
+  <div *ngIf="ready">
+    <ng-container *ngFor="let cmp of components">
+      <ng-container *ngComponentOutlet="cmp.type; injector: cmp.params"></ng-container>
+    </ng-container>
+  </div>
+</div>
